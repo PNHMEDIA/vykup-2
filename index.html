@@ -1,0 +1,2835 @@
+<html lang="cs" class="scroll-smooth" style="scroll-behavior: smooth;"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Výkup podílu na nemovitostech a celý nemovitostí po celé ČR | Rychlý výkup domů, bytů, chat, garáží | Nemovitostnivykupy.cz</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Vykoupíme podíl na nemovitosti nebo celou nemovitost obratem. Peníze dostanete ihned. Nacenění nezávazně do 24 hodin. Rychlý výkup domů, bytů, chat a garáží. Žádné poplatky, peníze ihned. Nezávazná nabídka zdarma.">
+    <meta name="keywords" content="výkup a prodej nemovitostí ČR, rychlý prodej domu, výkup bytu, výkup a prodej nemovitosti, výkup podílu nemovitosti">
+    <meta name="author" content="Nemovitostnivykupy.cz">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nemovitostnivykupy.cz">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter for clean, professional look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        /* Base styles for the entire page */
+        .font-display {
+            font-family: 'Outfit', 'Inter', sans-serif;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Fixed Top payment bar styling */
+        .top-payment-bar {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            color: white;
+            padding: 1rem 0;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 10px rgba(16, 185, 129, 0.2);
+            position: relative;
+            z-index: 50;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .top-payment-bar-wrapper {
+            display: flex;
+            animation: scrollText 30s linear infinite;
+            width: max-content;
+        }
+
+        .top-payment-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0 3rem;
+            flex-shrink: 0;
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .top-payment-bar {
+                font-size: 0.9rem;
+                padding: 0.75rem 0;
+            }
+            
+            .top-payment-bar-item svg {
+                width: 1rem !important;
+                height: 1rem !important;
+            }
+
+            .top-payment-bar-item {
+                padding: 0 2rem;
+            }
+
+            .top-payment-bar-wrapper {
+                animation: scrollText 25s linear infinite;
+            }
+        }
+
+        /* Styling for the call-to-action buttons */
+        .cta-button {
+            background: #60a5fa;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            border: none;
+        }
+        .cta-button:hover {
+            background: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(96, 165, 250, 0.4);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg,
+                rgba(30, 41, 59, 0.95) 0%,
+                rgba(51, 65, 85, 0.9) 50%,
+                rgba(71, 85, 105, 0.85) 100%
+            ), url('https://i.postimg.cc/gJTjnCXd/pexels-le-thanh-huyen-1056408622-33199788.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(96, 165, 250, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Hero content wrapper - centers all content together */
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            z-index: 10;
+        }
+
+        /* Improved Hero cards styling - smaller and cleaner */
+        #hero-cards {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 3rem;
+            z-index: 20;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-cards-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Cleaner property type cards */
+        .property-card {
+            text-align: center;
+            padding: 1.25rem 0.75rem;
+            border-radius: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: transparent;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .property-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(59, 130, 246, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .property-card:hover::before {
+            opacity: 1;
+        }
+
+        .property-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .property-icon {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto 0.75rem;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3b82f6;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .property-card:hover .property-icon {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            color: white;
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(96, 165, 250, 0.3);
+        }
+
+        .property-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: #1e293b;
+            position: relative;
+            z-index: 1;
+        }
+
+        .property-subtitle {
+            font-size: 0.8rem;
+            color: #64748b;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Provize za tip section styling */
+        .provize-section {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 2px solid #64748b;
+            border-radius: 1rem;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .provize-content {
+            flex: 1;
+        }
+        
+        .provize-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .provize-text {
+            color: #475569;
+            line-height: 1.6;
+        }
+        
+        .provize-phone-btn {
+            background: #64748b;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(100, 116, 139, 0.3);
+        }
+        
+        .provize-phone-btn:hover {
+            background: #475569;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(100, 116, 139, 0.4);
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .hero-section {
+                background-attachment: scroll;
+                min-height: 100vh;
+                padding: 1rem 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .hero-content {
+                padding: 2rem 1rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+                line-height: 1.1;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.125rem;
+                margin-bottom: 2rem;
+            }
+
+            #hero-cards {
+                margin-top: 2rem;
+                width: 100%;
+            }
+
+            .hero-cards-container {
+                padding: 1.5rem;
+                border-radius: 1.5rem;
+            }
+
+            .property-card {
+                padding: 1rem;
+            }
+
+            .property-icon {
+                width: 3rem;
+                height: 3rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .property-icon svg {
+                width: 1.5rem !important;
+                height: 1.5rem !important;
+            }
+
+            .property-title {
+                font-size: 1rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .property-subtitle {
+                font-size: 0.75rem;
+            }
+            
+            .provize-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            
+            .provize-phone-btn {
+                font-size: 1rem;
+                padding: 0.875rem 1.25rem;
+            }
+        }
+
+        /* Enhanced Form input and select styling */
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid #d1d5db;
+            background-color: #f9fafb;
+            color: #1e293b;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+            background-color: #ffffff;
+        }
+        
+        /* Enhanced select styling */
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
+        
+        .form-select:required:invalid {
+            color: #9ca3af;
+        }
+        
+        .form-select option {
+            color: #1e293b;
+            background-color: #ffffff;
+            padding: 0.5rem;
+        }
+        
+        .form-select option:hover, .form-select option:focus {
+            background-color: #f3f4f6;
+        }
+        
+        .form-select option[value=""][disabled] {
+            color: #9ca3af;
+            font-style: italic;
+        }
+
+        /* Hamburger menu styling */
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: #1e293b;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Enhanced Key benefits cards styling with better mobile support */
+        .benefit-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-icon {
+            width: 4rem;
+            height: 4rem;
+            background-color: #dbeafe;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+            flex-shrink: 0;
+        }
+        
+        /* Mobile icon fixes */
+        @media (max-width: 640px) {
+            .benefit-icon {
+                width: 3.5rem;
+                height: 3.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .benefit-icon svg {
+                width: 1.75rem !important;
+                height: 1.75rem !important;
+            }
+            
+            .benefit-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Stats section background and styling */
+        .stats-section {
+            background: #60a5fa;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        /* Section header styling */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #475569;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* FIXED PROCESS TIMELINE STYLING WITH PROPERLY CENTERED LINE */
+        .process-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        /* Animated vertical line connecting all steps - PROPERLY CENTERED */
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 3rem; /* Centered on the 4rem circles */
+            top: 6rem;
+            bottom: 6rem;
+            width: 4px;
+            background: linear-gradient(to bottom, #e2e8f0, #cbd5e1, #94a3b8);
+            border-radius: 2px;
+            z-index: 1;
+            opacity: 0.4;
+        }
+
+        /* Animated progress line - PROPERLY CENTERED */
+        .process-timeline::after {
+            content: '';
+            position: absolute;
+            left: 3rem; /* Centered on the 4rem circles */
+            top: 6rem;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, #60a5fa, #3b82f6, #1e40af);
+            border-radius: 2px;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.6);
+            transition: height 2s ease-in-out;
+        }
+
+        .process-timeline.animate-line::after {
+            height: calc(100% - 12rem);
+        }
+
+        .process-step {
+            position: relative;
+            padding: 2rem 0;
+            padding-left: 6rem;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        /* Step number circle with enhanced styling - PROPERLY POSITIONED */
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: 1rem; /* This centers the 4rem circle at 3rem */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            border: 4px solid white;
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4), 0 0 0 0 rgba(96, 165, 250, 0.4);
+            animation: pulse-ring 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4), 0 0 0 0 rgba(96, 165, 250, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4), 0 0 0 15px rgba(96, 165, 250, 0);
+            }
+            100% {
+                box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4), 0 0 0 0 rgba(96, 165, 250, 0);
+            }
+        }
+
+        /* Step number text - PROPERLY POSITIONED */
+        .step-number {
+            position: absolute;
+            left: 1rem; /* Same as circle */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            z-index: 11;
+        }
+
+        /* Step content card */
+        .step-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        .step-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .step-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .step-description {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Icon container */
+        .step-icon {
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3b82f6;
+        }
+
+        /* Mobile responsiveness for process timeline - FIXED */
+        @media (max-width: 768px) {
+            .process-timeline::before,
+            .process-timeline::after {
+                left: 1.5rem; /* Centered on mobile circles */
+                top: 4rem;
+                bottom: 4rem;
+            }
+
+            .process-step {
+                padding-left: 4.5rem;
+                padding: 1.5rem 0;
+                padding-left: 4.5rem;
+            }
+
+            .process-step::before {
+                left: 0.5rem; /* Centers 3rem circle at 1.5rem */
+                width: 3rem;
+                height: 3rem;
+            }
+
+            .step-number {
+                left: 0.5rem;
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.25rem;
+            }
+
+            .step-content {
+                padding: 1.5rem;
+            }
+
+            .step-title {
+                font-size: 1.25rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .step-description {
+                font-size: 0.9rem;
+            }
+
+            .step-icon {
+                position: relative;
+                right: auto;
+                top: auto;
+                margin-bottom: 1rem;
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.875rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.125rem;
+            }
+
+            /* Enhanced mobile hero section */
+            .hero-section {
+                background-attachment: scroll;
+                min-height: 100vh;
+                padding: 1rem 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .hero-content {
+                padding: 1.5rem 1rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.25rem;
+                line-height: 1.1;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.125rem;
+                margin-bottom: 2rem;
+            }
+
+            #hero-cards {
+                margin-top: 2rem;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .hero-cards-container {
+                padding: 1.5rem;
+                border-radius: 1.25rem;
+                margin: 0 0.5rem;
+            }
+
+            .property-card {
+                padding: 1rem 0.5rem;
+            }
+
+            .property-icon {
+                width: 2.75rem;
+                height: 2.75rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .property-icon svg {
+                width: 1.5rem !important;
+                height: 1.5rem !important;
+            }
+
+            .property-title {
+                font-size: 0.9rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .property-subtitle {
+                font-size: 0.75rem;
+            }
+            
+            .provize-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            
+            .provize-phone-btn {
+                font-size: 1rem;
+                padding: 0.875rem 1.25rem;
+            }
+
+            /* Better mobile grid for hero cards */
+            .hero-cards-container .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            
+        }
+
+        /* Scroll reveal animations class */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal-left.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal-scale.revealed {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .process-step.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* FAQ item styling with proper functionality */
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1.5rem 0;
+        }
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            color: #1e293b;
+            transition: color 0.3s ease;
+        }
+        .faq-question:hover {
+            color: #60a5fa;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            padding-top: 0;
+        }
+        .faq-answer p {
+            padding-top: 1rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: #94a3b8;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+        .faq-item.active .faq-question {
+            color: #60a5fa;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #60a5fa;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        /* Modern contact form styling */
+        .modern-form {
+            background-color: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+
+        /* Mobile menu styling */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        .mobile-overlay.open {
+            display: block;
+        }
+
+        /* Contact Popup Modal Styling */
+        .contact-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        
+        .contact-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .contact-modal-content {
+            background: white;
+            border-radius: 1.5rem;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
+        }
+        
+        .contact-modal.active .contact-modal-content {
+            transform: translateY(0);
+        }
+        
+        .contact-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #f3f4f6;
+            border: none;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .contact-modal-close:hover {
+            background: #e5e7eb;
+            transform: scale(1.1);
+        }
+        
+        .contact-modal-header {
+            background: #60a5fa;
+            color: white;
+            padding: 2rem;
+            border-radius: 1.5rem 1.5rem 0 0;
+            text-align: center;
+        }
+        
+        .contact-modal-body {
+            padding: 2rem;
+        }
+        
+        /* Mobile adjustments for modal */
+        @media (max-width: 640px) {
+            .contact-modal {
+                padding: 0.5rem;
+                align-items: flex-start;
+                padding-top: 2rem;
+            }
+            
+            .contact-modal-content {
+                max-height: calc(100vh - 4rem);
+                border-radius: 1rem;
+                width: 100%;
+                margin: 0;
+            }
+            
+            .contact-modal-header {
+                padding: 1rem 1.5rem;
+                border-radius: 1rem 1rem 0 0;
+            }
+            
+            .contact-modal-header h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            .contact-modal-header p {
+                font-size: 0.875rem;
+                margin: 0;
+            }
+            
+            .contact-modal-body {
+                padding: 1rem;
+            }
+            
+            .contact-modal-close {
+                top: 0.5rem;
+                right: 0.5rem;
+                width: 2rem;
+                height: 2rem;
+            }
+            
+            .contact-modal-close svg {
+                width: 1rem;
+                height: 1rem;
+            }
+        }
+
+        /* Consistent mobile padding for all sections */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+        }
+
+        .process-step::before {
+    /* your existing styles */
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    background-color: white; /* ADD THIS LINE */
+    border: 4px solid white;
+    /* rest of your styles */
+}
+.process-step::before {
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    box-shadow: 0 0 0 8px white; /* Creates white background behind circle */
+}
+ .process-timeline::before {
+     z-index: 1;
+ }
+
+ .process-timeline::after {
+     z-index: 2;
+ }
+
+.timeline {
+  position: relative;
+  width: 100%;
+  padding-left: 60px; /* space for circles and line */
+}
+
+.timeline-line {
+  position: absolute;
+  left: 34px; /* center of your circle, adjust if your circle is bigger/smaller */
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #429aff; /* your blue */
+  z-index: 1;
+}
+
+.timeline-step {
+  position: relative;
+  margin-bottom: 40px; /* space between steps */
+  min-height: 100px;   /* or more, as needed */
+}
+
+.timeline-circle {
+  position: absolute;
+  left: 20px;        /* aligns with the line */
+  top: 0;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border: 4px solid #429aff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 36px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  z-index: 2;        /* above the line */
+  box-shadow: 0 2px 8px rgba(66,154,255,0.12);
+}
+.timeline {
+  position: relative;
+  width: 100%;
+  padding-left: 60px;
+}
+
+/* The line MUST have a LOWER z-index than circles */
+.timeline-line {
+  position: absolute;
+  left: 34px;   /* adjust as needed */
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #429aff;
+  z-index: 1;   /* <-- LOWER THAN CIRCLES */
+}
+
+.timeline-step {
+  position: relative;
+  min-height: 100px;
+  margin-bottom: 40px;
+}
+
+/* The circle MUST have a HIGHER z-index than line */
+.timeline-circle {
+  position: absolute;
+  left: 16px;   /* aligns with the line */
+  top: 0;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border: 4px solid #429aff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 36px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  z-index: 10;   /* <-- HIGHER THAN LINE */
+  box-shadow: 0 2px 8px rgba(66,154,255,0.12);
+}
+
+ 
+
+/* Animated vertical line (background) */
+.process-timeline::before {
+    /* ... other styles ... */
+    z-index: 1; /* Keep this at 1 */
+}
+
+/* Animated progress line */
+.process-timeline::after {
+    /* ... other styles ... */
+    z-index: 2; /* Keep this at 2 (so it's above the background line) */
+}
+
+/* The step container */
+.process-step {
+    position: relative;
+    z-index: 3; /* ADD THIS LINE - This lifts the step above the lines */
+    /* ... other styles ... */
+}
+
+/* Isolated hero 2 */
+.hero-2{
+  color:#0f172a;
+  background:#fff;
+  padding:64px 0 28px;
+}
+.hero-2__wrap{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:1.05fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+.hero-2__content{min-width:280px}
+.hero-2__eyebrow{
+  color:#3b82f6;
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.2px;
+}
+.hero-2__title{
+  margin:8px 0 12px;
+  font-size:clamp(30px,4.5vw,56px);
+  line-height:1.05;
+  font-weight:800;
+}
+.hero-2__subtitle{
+  color:#64748b;
+  font-size:18px;
+  line-height:1.6;
+  max-width:56ch;
+  margin:0 0 22px 0;
+}
+.hero-2__cta{
+  background:#3b82f6;
+  color:#fff;
+  border:none;
+  padding:14px 24px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+}
+.hero-2__cta:hover{filter:brightness(.96)}
+.hero-2__media{min-width:280px}
+.hero-2__img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 8px 24px rgba(2,6,23,.08);
+}
+
+/* Cards container spacing */
+.hero-2__cards{
+  max-width:1200px;
+  margin:28px auto 0;
+  padding:0 24px;
+}
+
+/* Tailwind-like utility fallbacks if you are not using Tailwind */
+.grid{display:grid}
+.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.md\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.gap-4{gap:1rem}
+.md\:gap-6{gap:1.5rem}
+.text-slate-800{color:#1f2937}
+.w-6{width:1.5rem}.h-6{height:1.5rem}
+
+/* Basic card look if not already styled */
+.property-card{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  background:#fff;border:1px solid #e5e7eb;border-radius:10px;
+  padding:14px;text-align:center;
+}
+.property-icon{display:grid;place-items:center}
+.property-title{font-weight:700}
+
+/* Responsive */
+@media (max-width:960px){
+  .hero-2__wrap{grid-template-columns:1fr;gap:28px}
+  .hero-2__media{order:-1}
+  .md\:grid-cols-5{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .md\:gap-6{gap:1rem}
+}
+
+
+/* hero image – vždy landscape a stejné jako v maketě */
+ 
+.hero-2__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right; /* stejné orámování jako v ukázce */
+  border-radius: 16px;
+  box-shadow: 0 14px 40px rgba(2,6,23,.12);
+}
+
+/* typografie a šířka levého sloupce blíže maketě */
+.hero-2__wrap{
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+}
+.hero-2__content{ max-width: 640px; }
+
+/* karty – centrovat a níž pod heroem */
+.hero-2__cards{
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(56px, 9vw, 120px); /* víc dolů */
+  padding: 0 24px;
+}
+.hero-cards-container{
+  max-width: 1024px;
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, .08);
+}
+
+/* responsivita */
+@media (max-width: 960px){
+  .hero-2__wrap{ grid-template-columns: 1fr; gap: 28px; }
+  .hero-2__content{ max-width: 100%; }
+}
+
+/* Fixed Top payment bar styling */
+.top-payment-bar {
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    color: white;
+    padding: 1rem 0;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 10px rgba(16, 185, 129, 0.2);
+    overflow: hidden;
+    white-space: nowrap;
+    
+    /* These three lines make it stick to the top */
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 40; /* Make sure it's above other content */
+}
+/* --- New Hero Section Styles --- */
+
+/* Main container for the hero section */
+.hero-2 {
+    background-color: white;
+    padding: 4rem 0; /* Add more vertical padding */
+}
+
+/* The two-column grid layout */
+.hero-2__wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr; /* Give text slightly more space */
+    gap: 3rem; /* Space between text and image */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Eyebrow text styling */
+.hero-2__eyebrow {
+    color: #3b82f6; /* Blue color */
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+/* Main headline styling */
+.hero-2__title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsive font size */
+    font-weight: 800; /* Extra bold */
+    color: #0f172a; /* Dark slate color */
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+/* Subtitle paragraph styling */
+.hero-2__subtitle {
+    color: #475569; /* Medium gray color */
+    font-size: 1.125rem;
+    line-height: 1.6;
+    max-width: 45ch; /* Limit line length for readability */
+    margin-bottom: 2rem;
+}
+
+/* Container for the two buttons */
+.hero-2__buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between buttons */
+}
+
+/* Your existing primary button - already looks good! */
+.cta-button {
+    /* Your existing styles are fine */
+    padding: 0.875rem 1.75rem; /* Slightly larger padding */
+}
+
+/* New style for the secondary button */
+.cta-button--secondary {
+    background: white;
+    color: #1e293b; /* Dark text */
+    border: 1px solid #e2e8f0; /* Light gray border */
+    box-shadow: none;
+}
+
+.cta-button--secondary:hover {
+    background: #f8fafc; /* Very light gray background on hover */
+    border-color: #cbd5e1;
+    transform: none; /* Remove the lift effect */
+    box-shadow: none;
+}
+
+/* Image container and image styling */
+/* --- FINAL HERO IMAGE STYLES --- */
+
+/* The container for the image */
+.hero-2__media {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* This creates the widescreen shape */
+}
+
+/* The image itself */
+.hero-2__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.25rem;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .hero-2__wrap {
+        grid-template-columns: 1fr; /* Stack columns on mobile */
+        text-align: center;
+    }
+    .hero-2__media {
+        order: -1; /* Move image to the top on mobile */
+        margin-bottom: 2rem;
+    }
+    .hero-2__subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-2__buttons {
+        justify-content: center; /* Center buttons on mobile */
+        flex-direction: column; /* Stack buttons on smaller screens */
+        align-items: stretch;
+    }
+}
+/* --- FINAL HERO IMAGE STYLES (REPLACE OLD ONES WITH THIS) --- */
+
+/* The container for the image */
+.hero-2__media {
+    width: 100%;
+    aspect-ratio: 16 / 11;
+}
+
+/* The image itself */
+.hero-2__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    border-radius: 1.25rem;
+    object-position: center; /* <-- ADD THIS LINE */
+}
+
+/* Add this to your <style> block */
+    header {
+  position: -webkit-sticky; /* For Safari compatibility */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+/* Custom styles for the "About Us" section text */
+#o-nas h2 {
+    font-size: 1.875rem; /* Reduced from 2.25rem */
+}
+
+#o-nas p {
+    font-size: 1rem; /* Reduced from 1.125rem */
+    line-height: 1.6;
+}
+
+#o-nas .cta-button {
+    font-size: 0.875rem; /* Makes button text smaller */
+    padding: 0.6rem 1.2rem; /* Adjusts padding to fit the new text size */
+}
+
+/* Nadpis nad ikonami */
+.property-heading{
+  max-width:1200px;
+  margin: 32px auto 12px;   /* nahoru od hero, dolů k ikonám */
+  padding: 0 24px;
+  text-align:center;
+  font-weight:800;
+  font-size: clamp(20px, 2.6vw, 24px);
+  line-height:1.2;
+  color:#0f172a;
+}
+
+/* menší mezera, protože je nadpis */
+.hero-2__cards{
+  margin-top: 12px;         /* dřív jsi měl velké odsazení */
+}
+
+@media (max-width:768px){
+  .property-heading{ margin:24px auto 8px; font-size:20px; }
+}
+
+@media (max-width: 640px) {
+  .hero-cards-container .grid > div:last-child {
+    grid-column: 1 / -1;   /* roztáhne přes oba sloupce */
+    max-width: 100%;       /* plná šířka */
+  }
+}
+
+    </style>
+
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "Nemovitostnivykupy.cz",
+        "description": "Profesionální výkup nemovitostí v Praze. Rychlý výkup domů, bytů, chat a garáží za férovou cenu.",
+        "url": "https://nemovitostnivykupy.cz",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "U Rustonky 714/1",
+            "addressLocality": "Praha 8",
+            "addressCountry": "CZ"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+420770156156",
+            "contactType": "sales",
+            "email": "info@nemovitostnivykupy.cz",
+            "availableLanguage": "cs"
+        },
+        "areaServed": {
+            "@type": "Place",
+            "name": "Praha"
+        },
+        "serviceType": "Výkup nemovitostí"
+    }
+    </script>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.right-0{right:0px}.top-0{top:0px}.z-10{z-index:10}.z-30{z-index:30}.z-40{z-index:40}.order-1{order:1}.order-2{order:2}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:0.25rem}.mt-6{margin-top:1.5rem}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-10{height:2.5rem}.h-12{height:3rem}.h-16{height:4rem}.h-32{height:8rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-full{height:100%}.w-10{width:2.5rem}.w-12{width:3rem}.w-16{width:4rem}.w-32{width:8rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-80{width:20rem}.w-auto{width:auto}.w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-6xl{max-width:72rem}.max-w-sm{max-width:24rem}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-5 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.25rem * var(--tw-space-x-reverse));margin-left:calc(1.25rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.scroll-smooth{scroll-behavior:smooth}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-4{border-width:4px}.border-b{border-bottom-width:1px}.border-blue-100{--tw-border-opacity:1;border-color:rgb(219 234 254 / var(--tw-border-opacity, 1))}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-blue-200{--tw-bg-opacity:1;background-color:rgb(191 219 254 / var(--tw-bg-opacity, 1))}.bg-blue-400{--tw-bg-opacity:1;background-color:rgb(96 165 250 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-slate-800\/50{background-color:rgb(30 41 59 / 0.5)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/95{background-color:rgb(255 255 255 / 0.95)}.bg-opacity-50{--tw-bg-opacity:0.5}.object-cover{object-fit:cover}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-12{padding-left:3rem;padding-right:3rem}.px-4{padding-left:1rem;padding-right:1rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-20{padding-bottom:5rem}.pt-16{padding-top:4rem}.text-center{text-align:center}.text-right{text-align:right}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-wider{letter-spacing:0.05em}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-blue-100{--tw-text-opacity:1;color:rgb(219 234 254 / var(--tw-text-opacity, 1))}.text-blue-200{--tw-text-opacity:1;color:rgb(191 219 254 / var(--tw-text-opacity, 1))}.text-blue-300{--tw-text-opacity:1;color:rgb(147 197 253 / var(--tw-text-opacity, 1))}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.decoration-gray-600{-webkit-text-decoration-color:#4b5563;text-decoration-color:#4b5563}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.invert{--tw-invert:invert(100%);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-lg{--tw-backdrop-blur:blur(16px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:bg-blue-50:hover{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.hover\:text-blue-400:hover{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:decoration-white:hover{-webkit-text-decoration-color:#fff;text-decoration-color:#fff}.group:hover .group-hover\:bg-blue-300{--tw-bg-opacity:1;background-color:rgb(147 197 253 / var(--tw-bg-opacity, 1))}@media (min-width: 640px){.sm\:mb-0{margin-bottom:0px}.sm\:h-16{height:4rem}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-5xl{font-size:3rem;line-height:1}}@media (min-width: 768px){.md\:order-1{order:1}.md\:order-2{order:2}.md\:flex{display:flex}.md\:hidden{display:none}.md\:h-20{height:5rem}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}.md\:gap-6{gap:1.5rem}.md\:gap-8{gap:2rem}.md\:p-12{padding:3rem}.md\:p-8{padding:2rem}.md\:py-20{padding-top:5rem;padding-bottom:5rem}.md\:py-28{padding-top:7rem;padding-bottom:7rem}.md\:pb-28{padding-bottom:7rem}.md\:pt-24{padding-top:6rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-7xl{font-size:4.5rem;line-height:1}}@media (min-width: 1024px){.lg\:col-span-3{grid-column:span 3 / span 3}.lg\:col-span-4{grid-column:span 4 / span 4}.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:mx-0{margin-left:0px;margin-right:0px}.lg\:w-auto{width:auto}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.lg\:justify-start{justify-content:flex-start}.lg\:text-left{text-align:left}}</style></head>
+<body class="bg-gray-50 text-slate-800" style="">
+
+    <!-- Top Payment Bar -->
+    
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/95 backdrop-blur-lg z-30 shadow-sm border-b border-gray-100" >
+        <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="/" class="flex items-center">
+                <img src="https://nemovitostnivykupy.cz/images/loga/Nemovitostni_vykupy-White@2x.png" alt="Nemovitostní výkupy" class="h-6 sm:h-106 md:h-20 w-auto filter invert">
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#o-nas" class="text-slate-600 hover:text-blue-400 transition-colors duration-300 font-medium">O nás</a>
+                <a href="#jak-to-funguje" class="text-slate-600 hover:text-blue-400 transition-colors duration-300 font-medium">Jak to funguje</a>
+                <a href="#faq" class="text-slate-600 hover:text-blue-400 transition-colors duration-300 font-medium">FAQ</a>
+                <a href="#reference" class="text-slate-600 hover:text-blue-400 transition-colors duration-300 font-medium">Reference</a>
+                <button class="cta-button contact-popup-trigger">Kontaktovat</button>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <div class="hamburger" id="hamburger">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="top-payment-bar">
+            <div class="top-payment-bar-wrapper">
+                <div class="top-payment-bar-item">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                    </svg>
+                    Peníze vyplácíme ihned
+                </div>
+                <div class="top-payment-bar-item">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Nacenění do 24 hodin zdarma
+                </div>
+                <div class="top-payment-bar-item">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                    Rychlý výkup po celé ČR
+                </div>
+                <div class="top-payment-bar-item">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Žádné poplatky a starosti
+                </div>
+                <div class="top-payment-bar-item">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                    </svg>
+                    Peníze vyplácíme ihned
+                </div>
+                <div class="top-payment-bar-item">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Nacenění do 24 hodin zdarma
+                </div>
+                <div class="top-payment-bar-item">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                    Rychlý výkup po celé ČR
+                </div>
+                <div class="top-payment-bar-item">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Žádné poplatky a starosti
+                </div>
+            </div>
+        </div>
+    </header>
+
+   
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-2" >
+            <div class="hero-2__wrap">
+              <!-- Left content -->
+              <div class="hero-2__content">
+                <span class="hero-2__eyebrow">RYCHLÝ VÝKUP NEMOVITOSTÍ A PODÍLŮ</span>
+                <h1 class="hero-2__title">
+                    Vykupujeme podíly na nemovitostech za férovou cenu
+                </h1>
+                <p class="hero-2__subtitle">
+                    Vykoupíme i celé nemovitosti. Nabídku ceny od nás dostanete do 24 hodin nezávazně a zdarma.
+                </p>
+                <div class="hero-2__buttons">
+                    <button class="cta-button contact-popup-trigger">
+                        Získat nabídku zdarma
+                    </button>
+                    <a href="#jak-to-funguje" class="cta-button cta-button--secondary">
+                        Jak to funguje?
+                    </a>
+                </div>
+            </div>
+          
+              <!-- Right image -->
+              <div class="hero-2__media">
+                <img
+                  src="https://i.postimg.cc/wBptYBWN/Screenshot-2025-08-21-at-15-53-18.png"
+                  alt="Moderní dům"
+                  class="hero-2__img"
+                />
+              </div>
+            </div>
+
+            <h2 class="property-heading">Vykupujeme tyto nemovitosti:</h2>
+
+          
+            <!-- Cards block kept, SVGs included -->
+            <div class="hero-2__cards">
+              <div class="hero-cards-container">
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 text-slate-800">
+
+                    
+                  <!-- Dům -->
+                  <div class="property-card">
+                    <div class="property-icon">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M9 22V12h6v10"></path>
+                      </svg>
+                    </div>
+                    <span class="property-title">Dům</span>
+                  </div>
+          
+                  <!-- Byt -->
+                  <div class="property-card">
+                    <div class="property-icon">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                      </svg>
+                    </div>
+                    <span class="property-title">Byt</span>
+                  </div>
+          
+                  <!-- Chata -->
+                  <div class="property-card">
+                    <div class="property-icon">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                      </svg>
+                    </div>
+                    <span class="property-title">Chata</span>
+                  </div>
+          
+                  <!-- Garáže -->
+                  <div class="property-card">
+                    <div class="property-icon">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M21 20H3v-9.26a1 1 0 01.49-.86l8-4.51a1 1 0 011.02 0l8 4.51a1 1 0 01.49.86V20zM7 20v-4h10v4"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                          d="M15.5 12.5a.5.5 0 11-1 0 .5.5 0 011 0zM8.5 12.5a.5.5 0 11-1 0 .5.5 0 011 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 15.5h-3"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 12.5h-2a1 1 0 00-1 1v2"></path>
+                      </svg>
+                    </div>
+                    <span class="property-title">Garáž</span>
+                  </div>
+          
+                  <!-- Pozemek -->
+                  <div class="property-card">
+                    <div class="property-icon">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                          d="M8 10a2 2 0 100-4 2 2 0 000 4z"></path>
+                      </svg>
+                    </div>
+                    <span class="property-title">Pozemek</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+
+        <!-- Key Benefits Section -->
+        <section id="benefity" class="pt-16 pb-20 md:pt-24 md:pb-28 bg-white relative z-10">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="section-header scroll-reveal revealed">
+                    <h2 class="section-title">Proč si vybrat nás</h2>
+                    <p class="section-subtitle">Rychlost, transparentnost a profesionalita na prvním místě</p>
+                </div>
+
+                
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                    <div class="benefit-card scroll-reveal revealed" style="--delay: 0.1s; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                        <div class="benefit-icon">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Nacenění do 24 hodin</h3>
+                        <p class="text-slate-600 text-center">Získejte nezávaznou cenovou nabídku.</p>
+                    </div>
+                    
+                    <div class="benefit-card scroll-reveal revealed" style="--delay: 0.2s; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                        <div class="benefit-icon">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Peníze dostanete ihned na účet</h3>
+                        <p class="text-slate-600 text-center">Kupní cenu vyplatíme okamžitě při podpisu kupní smlouvy.</p>
+                    </div>
+                    
+                    <div class="benefit-card scroll-reveal" style="--delay: 0.3s; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                        <div class="benefit-icon">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Žádné poplatky</h3>
+                        <p class="text-slate-600 text-center">Naše služby jsou pro vás zcela zdarma, bez skrytých poplatků.</p>
+                    </div>
+                    
+                    <div class="benefit-card scroll-reveal" style="--delay: 0.4s; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                        <div class="benefit-icon">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Celou administrativu uděláme za Vás</h3>
+                        <p class="text-slate-600 text-center">Úřední záležitosti vyřídíme zdarma a uhradíme všechny poplatky.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section py-16 md:py-20 text-white relative">
+            <div class="container mx-auto px-4 sm:px-6 relative z-10">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8 scroll-reveal">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="250">0</div>
+                        <div class="text-lg font-medium">Prodaných nemovitostí</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="24">0</div>
+                        <div class="text-lg font-medium">Hodin do nacenění</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="text-lg font-medium">% spokojených klientů</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="o-nas" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1 scroll-reveal-left">
+                        <img src="https://i.postimg.cc/1XnRqxCP/Screenshot-2025-08-21-at-15-55-29.png" alt="Krásný rodinný dům" class="rounded-2xl shadow-2xl w-full">
+                    </div>
+                    <div class="order-1 md:order-2 scroll-reveal-right">
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">Dáváme nemovitostem nový život</h2>
+                        <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                            Specializujeme se na rychlý a férový výkup nemovitostí a podílů po celé České republice. Klientům nabízíme transparentní a férový přístup. Vhodné nemovitosti citlivě renovujeme a vracíme jim užitnou hodnotu a lesk.
+                        </p>
+                        <p class="text-slate-600 mb-8 leading-relaxed">
+                            Postaráme se o veškerou administrativu a uhradíme všechny poplatky. Pokud zvažujete prodej, kontaktujte nás pro nezávaznou konzultaci a cenovou nabídku.
+                        </p>
+                        <button class="cta-button inline-block contact-popup-trigger">
+                            Nezávazná nabídka zdarma
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Provize za tip Section -->
+        <section class="py-12 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="provize-section scroll-reveal-scale">
+                    <div class="provize-content">
+                        <h3 class="provize-title">Provize za tip</h3>
+                        <p class="provize-text">
+                            Pokud víte o někom ve svém okolí, kdo má zájem prodat svůj podíl nebo nemovitost, propojte nás a my Vám v případě realizovaného výkupu vyplatíme provizi za zprostředkování.
+                        </p>
+                    </div>
+                    <a href="tel:+420770156156" class="provize-phone-btn">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                        +420 770 156 156
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section - ENHANCED WITH ANIMATED LINE -->
+        <section id="jak-to-funguje" class="py-20 md:py-28 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">Proces výkupu v 5 krocích</h2>
+                    <p class="section-subtitle">Jednoduše, rychle a transparentně</p>
+                </div>
+
+                <div class="process-timeline" id="processTimeline">
+                    <!-- Step 1 -->
+                    <div class="process-step" data-step="1" style="translate: none; rotate: none; scale: none; transform: translate(80px) scale(0.9, 0.9); opacity: 0;">
+                        <div class="step-number" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0%, -50%) translate(0px, -0.39154px) scale(0, 0);">1</div>
+                        <div class="step-content" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0px, 50px);">
+                            <div class="step-icon" style="translate: none; rotate: none; scale: none; transform: rotate(-180deg) scale(0, 0);">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <div class="step-label">Krok 1</div>
+                            <h3 class="step-title">Kontaktujte nás</h3>
+                            <p class="step-description">Vyplňte formulář, zavolejte nebo napište email. Náš tým vám okamžitě odpoví a dohodne si s vámi další postup.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="process-step" data-step="2" style="translate: none; rotate: none; scale: none; transform: translate(80px) scale(0.9, 0.9); opacity: 0;">
+                        <div class="step-number" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0%, -50%) translate(0px, -0.39154px) scale(0, 0);">2</div>
+                        <div class="step-content" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0px, 50px);">
+                            <div class="step-icon" style="translate: none; rotate: none; scale: none; transform: rotate(-180deg) scale(0, 0);">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                </svg>
+                            </div>
+                            <div class="step-label">Krok 2</div>
+                            <h3 class="step-title">Naceníme Váš podíl nebo nemovitost</h3>
+                            <p class="step-description">Do 24 hodin obdržíte nezávaznou nabídku na výkup vašeho podílu nebo nemovitosti. Všechny výpočty jsou transparentní a férové.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="process-step" data-step="3" style="translate: none; rotate: none; scale: none; transform: translate(80px) scale(0.9, 0.9); opacity: 0;">
+                        <div class="step-number" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0%, -50%) translate(0px, -0.39154px) scale(0, 0);">3</div>
+                        <div class="step-content" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0px, 50px);">
+                            <div class="step-icon" style="translate: none; rotate: none; scale: none; transform: rotate(-180deg) scale(0, 0);">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="step-label">Krok 3</div>
+                            <h3 class="step-title">Schválení a smlouva</h3>
+                            <p class="step-description">Pokud Vám bude cena vyhovovat a rozhodnete se pro prodej, připravíme a pošleme vám k vašemu vyjádření kupní smlouvu.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                   
+
+                    <!-- Step 5 -->
+                    <!-- Step 4 -->
+<div class="process-step" data-step="4">
+    <div class="step-number">4</div>
+    <div class="step-content">
+      <div class="step-icon">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+        </svg>
+      </div>
+      <div class="step-label">Krok 4</div>
+     <h3 class="step-title">Peníze ihned</h3>
+      <p class="step-description">Peníze vám vyplatíme okamžitě při podpisu smlouvy. Žádné čekání na bankovní převody nebo složité procedury.</p>
+   
+   
+    </div>
+  </div>
+  
+  <!-- Step 5 -->
+  <div class="process-step" data-step="5">
+    <div class="step-number">5</div>
+    <div class="step-content">
+      <div class="step-icon">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+        </svg>
+      </div>
+      <div class="step-label">Krok 5</div>
+      <h3 class="step-title">Vyřízení administrativy</h3>
+     
+     
+      <p class="step-description">Nebudete muset chodit na úřady. Vklady na katastr a právní servis zařídíme za vás a uhradíme všechny poplatky.</p>
+       </div>
+  </div>
+  
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">Často kladené otázky</h2>
+                    <p class="section-subtitle">Odpovědi na nejčastější dotazy našich klientů</p>
+                </div>
+
+                <div class="max-w-4xl mx-auto">
+                    <div class="faq-item scroll-reveal" style="--delay: 0.1s">
+                        <button class="faq-question">
+                            <span>Jak rychle dostanu nabídku na mou nemovitost?</span>
+                            <svg class="faq-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Naši odborníci zpracují cenovou nabídku do 24 hodin od obdržení všech potřebných informací o nemovitosti. V případě urgentních případů dokážeme nabídku připravit i rychleji.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item scroll-reveal" style="--delay: 0.2s">
+                        <button class="faq-question">
+                            <span>Vykupujete i podíly nemovitostí?</span>
+                            <svg class="faq-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ano, specializujeme se na výkup jak celých nemovitostí, tak i podílů. Řešíme složité situace s více spoluvlastníky, dědické spory nebo situace s problematickými vlastníky.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item scroll-reveal" style="--delay: 0.3s">
+                        <button class="faq-question">
+                            <span>Platíte skutečně okamžitě při podpisu?</span>
+                            <svg class="faq-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ano, finance převádíme na váš účet okamžitě při podpisu kupní smlouvy. Nevyužíváme bankovní úschovu, pokud to klient nevyžaduje. Klient tak získá peníze za prodej okamžitě.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item scroll-reveal" style="--delay: 0.4s">
+                        <button class="faq-question">
+                            <span>Vykupujete nemovitosti v celé České republice?</span>
+                            <svg class="faq-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ano vykupujeme nemovitosti v celé České republice. Dokonce místo a čas podpisu smluv si zvolíte sami, jak vám to bude vyhovovat. Přijedeme za vámi.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item scroll-reveal" style="--delay: 0.5s">
+                        <button class="faq-question">
+                            <span>Co když mám na nemovitosti hypotéku nebo zástavní právo?</span>
+                            <svg class="faq-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Není to problém. Pomůžeme vám vyřešit splacení hypotéky nebo zástavního práva. Částku za nemovitost rozdělíme - část půjde na splacení závazků a zbytek obdržíte vy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- References Section -->
+        <section id="reference" class="py-20 md:py-28 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">Reference klientů</h2>
+                    <p class="section-subtitle">Spokojenost našich klientů je naší nejlepší vizitkou</p>
+                </div>
+
+                
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 scroll-reveal-left">
+                        <div class="flex items-center mb-6">
+                            <div class="flex text-yellow-400">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 italic mb-6 text-lg leading-relaxed">
+                            "Společnost Nemovitostní výkupy nám pomohla prodat podíl na rekreačním objektu. Díky jejich rychlému a profesionálnímu přístupu probíhala transakce hladce a peníze jsme obdrželi okamžitě. Dům byl zrekonstruován a má nového spokojeného majitele. Děkujeme za skvělou spolupráci."
+                        </p>
+                        <div class="flex items-center">
+                            <div>
+                                <p class="font-semibold text-slate-800">Rodina H.</p>
+                                <p class="text-sm text-slate-500">Praha</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 scroll-reveal-right">
+                        <div class="flex items-center mb-6">
+                            <div class="flex text-yellow-400">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 italic mb-6 text-lg leading-relaxed">
+                            "Chalupu ve spoluvlastnictví ohrožovala exekuce jednoho příbuzného. Společnost Nemovitostní výkupy exekuci vyplatila a zachránila nemovitost. Přijali jsme nabídku, prodali zbývající podíl a peníze dostali okamžitě. Během 2 měsíců jsme místo dluhů měli peníze na účtu. Chalupa byla zrekonstruována a má nové majitele."
+                        </p>
+                        <div class="flex items-center">
+                            <div>
+                                <p class="font-semibold text-slate-800">Paní E.S.</p>
+                                <p class="text-sm text-slate-500">Brno</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="kontakt" class="py-20 md:py-28 text-white relative overflow-hidden" style="background-color: #60a5fa;">
+            <div class="container mx-auto px-4 sm:px-6 relative z-10">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title text-white">Máte zájem o prodej?</h2>
+                    <p class="section-subtitle text-blue-100">Neváhejte nás kontaktovat. Telefonicky Po-Pá 8:00-18:00 hodin. Emailem každý den.</p>
+                </div>
+                
+                <div class="modern-form max-w-6xl mx-auto p-6 md:p-12 scroll-reveal-scale">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <!-- Contact Information -->
+                        <div class="text-white scroll-reveal-left">
+                            <h3 class="text-2xl font-bold mb-8 text-black">Kontaktní údaje</h3>
+                            
+                            <!-- Contact Person -->
+                            <div class="mb-6 p-8 bg-white rounded-2xl border border-blue-100 shadow-lg">
+                                <div class="text-center mb-6">
+                                    <img src="https://nemovitostnivykupy.cz/images/contact/ContactAdela.png" alt="Adéla Nováková" class="w-32 h-32 mx-auto rounded-full object-cover shadow-lg border-4 border-white mb-4">
+                                    <h4 class="font-bold text-xl text-slate-900 mb-1">Adéla Nováková</h4>
+                                    <p class="text-blue-500 font-semibold text-lg mb-2">Obchodní oddělení</p>
+                                    <div class="w-12 h-1 bg-blue-400 rounded-full mx-auto mb-3"></div>
+                                    <p class="text-sm text-slate-600 leading-relaxed">Specialistka na výkup nemovitostí</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Contact Details -->
+                            <div class="bg-white rounded-2xl border border-blue-100 shadow-lg p-6">
+                                <div class="space-y-4">
+                                    <a href="tel:+420770156156" class="flex items-center gap-4 p-4 rounded-xl hover:bg-blue-50 transition-colors group">
+                                        <div class="w-12 h-12 bg-blue-200 rounded-xl flex items-center justify-center group-hover:bg-blue-300 transition-colors">
+                                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-slate-900">+420 770 156 156</p>
+                                            <p class="text-sm text-slate-600">Po-Pá 8:00-18:00</p>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="mailto:info@nemovitostnivykupy.cz" class="flex items-center gap-4 p-4 rounded-xl hover:bg-blue-50 transition-colors group">
+                                        <div class="w-12 h-12 bg-blue-200 rounded-xl flex items-center justify-center group-hover:bg-blue-300 transition-colors">
+                                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-slate-900">info@nemovitostnivykupy.cz</p>
+                                            <p class="text-sm text-slate-600">Odpovídáme do 2 hodin</p>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="https://maps.app.goo.gl/xxo9vB6FmzDf1kXFA" target="_blank" class="flex items-center gap-4 p-4 rounded-xl hover:bg-blue-50 transition-colors group">
+                                        <div class="w-12 h-12 bg-blue-200 rounded-xl flex items-center justify-center group-hover:bg-blue-300 transition-colors">
+                                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-slate-900">U Rustonky 714/1, Praha 8</p>
+                                            <p class="text-sm text-slate-600">Osobní konzultace po domluvě</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Form -->
+                        <div class="scroll-reveal-right">
+                            <h3 class="text-2xl font-bold mb-8 text-black">Napište nám</h3>
+                            <p class="text-slate-700 mb-4">
+                                Zajímá Vás, kolik můžete dostat za svoji nemovitost?
+                                Vyplňte <a href="#kontakt" class="text-blue-600 underline">kontaktní formulář</a>,
+                                <a href="tel:+420770156156" class="text-blue-600 underline">zavolejte nám</a>
+                                nebo napište <a href="mailto:info@nemovitostnivykupy.cz" class="text-blue-600 underline">email</a>.
+                              </p>
+                              
+                            <form action="contact_form.php" method="POST" class="space-y-6" id="contactForm">
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <input type="text" name="name" class="form-input" placeholder="Vaše jméno *" required="">
+                                    <input type="tel" name="phone" class="form-input" placeholder="Telefon">
+                                </div>
+                                <input type="email" name="email" class="form-input" placeholder="Váš email *" required="">
+                                <select name="property_type" class="form-select" required="">
+                                    <option value="" disabled="" selected="">Vyberte typ nemovitosti</option>
+                                    <option value="rodinny-dum">Rodinný dům</option>
+                                    <option value="cinzovni-dum">Činžovní dům</option>
+                                    <option value="byt">Byt</option>
+                                    <option value="chata">Chata</option>
+                                    <option value="chalupa">Chalupa</option>
+                                    <option value="garaz">Garáž</option>
+                                    <option value="pozemek-stavebni">Stavební pozemek</option>
+                                    <option value="pozemek-zemedelsky">Zemědělský pozemek</option>
+                                    <option value="komerci-objekt">Komerční objekt</option>
+                                    <option value="jine">Jiný typ nemovitosti</option>
+                                </select>
+                                <textarea name="message" rows="5" class="form-input" placeholder="Popište stručně vaši nemovitost, její stav, lokalitu a důvod prodeje..." required=""></textarea>
+                                
+                                <div class="flex items-start gap-3">
+                                    <input type="checkbox" id="gdpr" name="gdpr" class="mt-1 rounded border-gray-300 text-blue-400" required="">
+                                    <label for="gdpr" class="text-sm text-slate-800">
+                                        Souhlasím se zpracováním osobních údajů za účelem zpracování poptávky podle GDPR *
+                                    </label>
+                                </div>
+                                
+                                <button type="submit" class="cta-button w-full text-lg" id="submitBtn">
+                                    Odeslat nezávaznou poptávku
+                                </button>
+                                
+                                <div id="formMessage" class="text-center text-sm" style="display: none;"></div>
+                                
+                                <p class="text-xs text-blue-100 text-center">
+                                    * Povinné pole. Odpovíme vám do 24 hodin s nezávaznou cenovou nabídkou.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact Popup Modal -->
+    <div class="contact-modal" id="contactModal">
+        <div class="contact-modal-content">
+            <button class="contact-modal-close" id="closeModal">
+                <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <div class="contact-modal-header">
+                <h2 class="text-3xl font-bold mb-2">Kontaktujte nás</h2>
+                <p class="text-blue-100 text-lg">Nezávazná nabídka do 24 hodin zdarma</p>
+            </div>
+            
+            <div class="contact-modal-body">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Contact Information -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-slate-900">Kontaktní údaje</h3>
+                        
+                        <!-- Contact Person -->
+                        <div class="mb-6 p-6 bg-white rounded-xl border border-blue-100 shadow-lg">
+                            <div class="flex items-center gap-4">
+                                <img src="https://nemovitostnivykupy.cz/images/contact/ContactAdela.png" alt="Adéla Nováková" class="w-16 h-16 rounded-full object-cover shadow border-2 border-white">
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-900">Adéla Nováková</h4>
+                                    <p class="text-blue-500 font-medium">Obchodní oddělení</p>
+                                    <p class="text-sm text-slate-600">Specialistka na výkup nemovitostí</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Details -->
+                        <div class="space-y-3">
+                            <a href="tel:+420770156156" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors group">
+                                <div class="w-10 h-10 bg-blue-200 rounded-lg flex items-center justify-center group-hover:bg-blue-300 transition-colors">
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-900">+420 770 156 156</p>
+                                    <p class="text-sm text-slate-600">Po-Pá 8:00-18:00</p>
+                                </div>
+                            </a>
+                            
+                            <a href="mailto:info@nemovitostnivykupy.cz" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors group">
+                                <div class="w-10 h-10 bg-blue-200 rounded-lg flex items-center justify-center group-hover:bg-blue-300 transition-colors">
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-900">info@nemovitostnivykupy.cz</p>
+                                    <p class="text-sm text-slate-600">Odpovídáme do 2 hodin</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-slate-900">Napište nám</h3>
+                        <p class="text-slate-700 mb-4">
+                            Zajímá Vás, kolik můžete dostat za svoji nemovitost?
+                            Vyplňte <a href="#kontakt" class="text-blue-600 underline">kontaktní formulář</a>,
+                            <a href="tel:+420770156156" class="text-blue-600 underline">zavolejte nám</a>
+                            nebo napište <a href="mailto:info@nemovitostnivykupy.cz" class="text-blue-600 underline">email</a>.
+                          </p>
+                          
+                        <form action="contact_form.php" method="POST" class="space-y-4" id="popupContactForm">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <input type="text" name="name" class="form-input" placeholder="Vaše jméno *" required="">
+                                <input type="tel" name="phone" class="form-input" placeholder="Telefon">
+                            </div>
+                            <input type="email" name="email" class="form-input" placeholder="Váš email *" required="">
+                            <select name="property_type" class="form-select" required="">
+                                <option value="" disabled="" selected="">Vyberte typ nemovitosti</option>
+                                <option value="rodinny-dum">Rodinný dům</option>
+                                <option value="cinzovni-dum">Činžovní dům</option>
+                                <option value="byt">Byt</option>
+                                <option value="chata">Chata</option>
+                                <option value="chalupa">Chalupa</option>
+                                <option value="garaz">Garáž</option>
+                                <option value="pozemek-stavebni">Stavební pozemek</option>
+                                <option value="pozemek-zemedelsky">Zemědělský pozemek</option>
+                                <option value="komerci-objekt">Komerční objekt</option>
+                                <option value="jine">Jiný typ nemovitosti</option>
+                            </select>
+                            <textarea name="message" rows="4" class="form-input" placeholder="Popište stručně vaši nemovitost, její stav, lokalitu a důvod prodeje..." required=""></textarea>
+                            
+                            <div class="flex items-start gap-3">
+                                <input type="checkbox" id="gdprPopup" name="gdpr" class="mt-1 rounded border-gray-300 text-blue-400" required="">
+                                <label for="gdprPopup" class="text-sm text-slate-800">
+                                    Souhlasím se zpracováním osobních údajů za účelem zpracování poptávky podle GDPR *
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="cta-button w-full" id="popupSubmitBtn">
+                                Odeslat nezávaznou poptávku
+                            </button>
+                            
+                            <div id="popupFormMessage" class="text-center text-sm" style="display: none;"></div>
+                            
+                            <p class="text-xs text-slate-500 text-center">
+                                * Povinné pole. Odpovíme vám do 24 hodin s nezávaznou cenovou nabídkou.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-black text-gray-300">
+        <div class="container mx-auto px-4 sm:px-6 py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 scroll-reveal">
+                
+                <!-- Footer: Logo and Description (Left Side) -->
+                <div class="lg:col-span-4 text-center lg:text-left">
+                    <a href="/" class="inline-block mb-6">
+                        <img src="https://nemovitostnivykupy.cz/images/loga/Nemovitostni_vykupy-White@2x.png" alt="Nemovitostní výkupy" class="h-12 w-auto">
+                    </a>
+                    <p class="text-gray-400 leading-relaxed max-w-sm mx-auto lg:mx-0">
+                        Specializujeme se na rychlý a férový výkup nemovitostí a podílů po celé České republice. Nabízíme profesionální přístup a okamžité financování.
+                    </p>
+                    
+                </div>
+                
+                <!-- Footer: Sitelinks (Middle) -->
+                <div class="lg:col-span-5 grid grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-white font-bold tracking-wider uppercase mb-5">Rychlé odkazy</h3>
+                        <nav class="flex flex-col space-y-3">
+                            <a href="#o-nas" class="hover:text-white transition-colors">O nás</a>
+                            <a href="#jak-to-funguje" class="hover:text-white transition-colors">Jak to funguje</a>
+                            <a href="#reference" class="hover:text-white transition-colors">Reference</a>
+                            <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+                        </nav>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold tracking-wider uppercase mb-5">Naše služby</h3>
+                        <nav class="flex flex-col space-y-3">
+                            <a href="#" class="hover:text-white transition-colors">Výkup domů a bytů</a>
+                            <a href="#" class="hover:text-white transition-colors">Výkup podílů</a>
+                            <a href="#" class="hover:text-white transition-colors">Výkup chat a garáží</a>
+                            <a href="#" class="hover:text-white transition-colors">Řešení exekucí</a>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Footer: Call to Action (Right Side) -->
+                <div class="lg:col-span-3 text-center lg:text-left">
+                    <h3 class="text-white font-bold tracking-wider uppercase mb-5">Máte zájem o prodej?</h3>
+                    <p class="mb-6">Získejte od nás nezávaznou nabídku zdarma do 24 hodin.</p>
+                    <button class="cta-button w-full lg:w-auto contact-popup-trigger">
+                        Nezávazná nabídka
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- Sub-Footer with Copyright and Socials -->
+        <div class="bg-slate-800/50 py-6">
+            <div class="container mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center text-center">
+                <p class="text-sm text-gray-400 mb-4 sm:mb-0">
+                    © 2024 Nemovitostnivykupy.cz - Všechna práva vyhrazena.
+                </p>
+                <div class="flex space-x-5">
+                    <a href="https://www.facebook.com/share/1K8eAZvext/?mibextid=wwXIfr" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg>
+                    </a>
+                    <a href="https://www.instagram.com/nemovitostni_vykupy?igsh=cHZqN2k4aTZ0amY4&amp;utm_source=qr" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 right-0 h-full w-80 bg-white shadow-lg z-40 md:hidden" id="mobileMenu">
+        <div class="p-6">
+            <div class="text-right mb-8">
+                <button id="close-menu-btn" class="text-slate-600 hover:text-blue-400">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        
+            <nav class="flex flex-col space-y-6">
+                <a href="#o-nas" class="mobile-nav-link text-slate-600 hover:text-blue-400 transition-colors duration-300 text-lg font-medium">O nás</a>
+                <a href="#jak-to-funguje" class="mobile-nav-link text-slate-600 hover:text-blue-400 transition-colors duration-300 text-lg font-medium">Jak to funguje</a>
+                <a href="#faq" class="mobile-nav-link text-slate-600 hover:text-blue-400 transition-colors duration-300 text-lg font-medium">FAQ</a>
+                <a href="#reference" class="mobile-nav-link text-slate-600 hover:text-blue-400 transition-colors duration-300 text-lg font-medium">Reference</a>
+                <button class="mobile-nav-link cta-button text-center contact-popup-trigger">Kontaktovat</button>
+            </nav>
+        </div>
+    </div>
+    <div class="mobile-overlay fixed inset-0 bg-black bg-opacity-50 z-30 hidden" id="mobileOverlay"></div>
+
+    <!-- Main Application Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+        // Hero Section Animation
+        const heroTl = gsap.timeline({ defaults: { duration: 1, ease: 'power3.out' } });
+        heroTl.fromTo('#hero-title', { y: 50, opacity: 0 }, { y: 0, opacity: 1 })
+              .fromTo('#hero-subtitle', { y: 50, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.8")
+              .fromTo('#hero-button', { y: 50, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.8")
+              .fromTo('#hero-cards', { y: 50, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.7");
+
+        // ENHANCED: Universal Scroll Reveal System
+        function initScrollReveal() {
+            const scrollElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale');
+            
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= 
+                    (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+            
+            const elementOutofView = (el) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop > 
+                    (window.innerHeight || document.documentElement.clientHeight)
+                );
+            };
+            
+            const displayScrollElement = (element) => {
+                element.classList.add('revealed');
+            };
+            
+            const hideScrollElement = (element) => {
+                element.classList.remove('revealed');
+            };
+            
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    } else if (elementOutofView(el)) {
+                        hideScrollElement(el);
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+            
+            // Initial check
+            handleScrollAnimation();
+        }
+        
+        // Initialize scroll reveal
+        initScrollReveal();
+
+        // Enhanced Stats Counter Animation with scroll trigger
+        const statNumbers = document.querySelectorAll('.stat-number');
+        statNumbers.forEach(stat => {
+            const target = +stat.dataset.target;
+            gsap.fromTo(stat, 
+                { innerText: 0 }, 
+                {
+                    innerText: target,
+                    duration: 2.5,
+                    ease: 'power2.out',
+                    snap: { innerText: 1 },
+                    scrollTrigger: {
+                        trigger: stat,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        });
+
+        // ENHANCED: Process Timeline Animations with Properly Centered Line
+        const processTimeline = document.getElementById('processTimeline');
+        const processSteps = document.querySelectorAll('.process-step');
+        
+        // Animate the timeline line on scroll
+        ScrollTrigger.create({
+            trigger: processTimeline,
+            start: 'top 70%',
+            onEnter: () => {
+                processTimeline.classList.add('animate-line');
+            },
+            onLeaveBack: () => {
+                processTimeline.classList.remove('animate-line');
+            }
+        });
+        
+        processSteps.forEach((step, index) => {
+            gsap.fromTo(step, 
+                {
+                    opacity: 0,
+                    x: 80,
+                    scale: 0.9
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    scale: 1,
+                    duration: 1.2,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: step,
+                        start: 'top 90%',
+                        end: 'bottom 10%',
+                        toggleActions: 'play none none reverse',
+                        onEnter: () => {
+                            step.classList.add('animate-in');
+                        },
+                        onLeave: () => {
+                            step.classList.remove('animate-in');
+                        },
+                        onEnterBack: () => {
+                            step.classList.add('animate-in');
+                        },
+                        onLeaveBack: () => {
+                            step.classList.remove('animate-in');
+                        }
+                    }
+                }
+            );
+
+            // Animate the step content card with a slight delay
+            gsap.fromTo(step.querySelector('.step-content'),
+                {
+                    y: 50,
+                    opacity: 0
+                },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    delay: index * 0.15,
+                    scrollTrigger: {
+                        trigger: step,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+
+            // Animate the step icon with a bounce effect
+            gsap.fromTo(step.querySelector('.step-icon'),
+                {
+                    scale: 0,
+                    rotation: -180
+                },
+                {
+                    scale: 1,
+                    rotation: 0,
+                    duration: 0.6,
+                    ease: 'back.out(1.7)',
+                    delay: (index * 0.15) + 0.4,
+                    scrollTrigger: {
+                        trigger: step,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+
+            // Animate the step number with a pop effect
+            gsap.fromTo(step.querySelector('.step-number'),
+                {
+                    scale: 0,
+                    opacity: 0
+                },
+                {
+                    scale: 1,
+                    opacity: 1,
+                    duration: 0.5,
+                    ease: 'back.out(2)',
+                    delay: (index * 0.15) + 0.2,
+                    scrollTrigger: {
+                        trigger: step,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+
+        // Enhanced hover effects for process steps
+        processSteps.forEach(step => {
+            const content = step.querySelector('.step-content');
+            const icon = step.querySelector('.step-icon');
+            
+            content.addEventListener('mouseenter', () => {
+                gsap.to(icon, {
+                    scale: 1.15,
+                    rotation: 8,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+                gsap.to(content, {
+                    y: -8,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            
+            content.addEventListener('mouseleave', () => {
+                gsap.to(icon, {
+                    scale: 1,
+                    rotation: 0,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+                gsap.to(content, {
+                    y: 0,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // Enhanced Benefit Cards Animation
+        const benefitCards = document.querySelectorAll('.benefit-card');
+        benefitCards.forEach((card, index) => {
+            gsap.fromTo(card,
+                {
+                    opacity: 0,
+                    y: 60,
+                    scale: 0.9
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    delay: index * 0.1,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+
+        // FAQ Accordion Functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            question.addEventListener('click', function() {
+                const isActive = item.classList.contains('active');
+                
+                // Close all FAQ items
+                faqItems.forEach(faqItem => {
+                    faqItem.classList.remove('active');
+                    const faqAnswer = faqItem.querySelector('.faq-answer');
+                    faqAnswer.style.maxHeight = '0';
+                });
+                
+                // If this item wasn't active, open it
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            mobileOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        mobileOverlay.addEventListener('click', closeMenu);
+        mobileNavLinks.forEach(link => {
+            if (!link.classList.contains('contact-popup-trigger')) {
+                link.addEventListener('click', closeMenu);
+            }
+        });
+
+        // Contact Popup Modal
+        const contactModal = document.getElementById('contactModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const contactPopupTriggers = document.querySelectorAll('.contact-popup-trigger');
+
+        function openContactModal() {
+            contactModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            closeMenu();
+        }
+
+        function closeContactModal() {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        contactPopupTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                openContactModal();
+            });
+        });
+
+        closeModalBtn.addEventListener('click', closeContactModal);
+
+        contactModal.addEventListener('click', function(e) {
+            if (e.target === contactModal) {
+                closeContactModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+                closeContactModal();
+            }
+        });
+
+        // Form submission handling
+        const popupContactForm = document.getElementById('popupContactForm');
+        const contactForm = document.getElementById('contactForm');
+        
+        if (popupContactForm) {
+            popupContactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitForm(popupContactForm, 'popupSubmitBtn', 'popupFormMessage', true);
+            });
+        }
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitForm(contactForm, 'submitBtn', 'formMessage', false);
+            });
+        }
+        
+        function submitForm(form, submitBtnId, messageId, isPopup) {
+            const submitBtn = document.getElementById(submitBtnId);
+            const messageDiv = document.getElementById(messageId);
+            const formData = new FormData(form);
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Odesílám...';
+            messageDiv.style.display = 'none';
+            
+            fetch('contact_form.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                messageDiv.style.display = 'block';
+                messageDiv.textContent = data.message;
+                
+                if (data.success) {
+                    messageDiv.className = 'text-center text-sm text-green-600 bg-green-50 p-3 rounded-lg';
+                    form.reset();
+                    
+                    if (isPopup) {
+                        setTimeout(() => {
+                            closeContactModal();
+                        }, 2000);
+                    }
+                } else {
+                    messageDiv.className = 'text-center text-sm text-red-600 bg-red-50 p-3 rounded-lg';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                messageDiv.style.display = 'block';
+                messageDiv.textContent = 'Došlo k chybě při odesílání. Zkuste to prosím znovu.';
+                messageDiv.className = 'text-center text-sm text-red-600 bg-red-50 p-3 rounded-lg';
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Odeslat nezávaznou poptávku';
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    closeMenu(); // Close mobile menu if open
+                }
+            });
+        });
+    });
+    </script>
+
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;96de86122a83f9a1&quot;,&quot;version&quot;:&quot;2025.7.0&quot;,&quot;r&quot;:1,&quot;token&quot;:&quot;bdaa1ab617584900afefbb7aed4074f0&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}}}" crossorigin="anonymous"></script>
+
+</body></html>
