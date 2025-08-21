@@ -1521,7 +1521,128 @@
     max-width: 100%;       /* plná šířka */
   }
 }
+/* Fix 1: Prevent horizontal scrolling */
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scroll on entire page */
+    width: 100%;
+    position: relative;
+}
 
+/* Fix 2: Contain the payment bar properly */
+.top-payment-bar {
+    overflow: hidden; /* Ensure the scrolling content doesn't create horizontal overflow */
+    width: 100%;
+    position: relative;
+}
+
+.top-payment-bar-wrapper {
+    display: flex;
+    animation: scrollText 30s linear infinite;
+    width: max-content;
+    will-change: transform; /* Optimize for animation */
+}
+
+/* Fix 3: Ensure all containers stay within viewport */
+.container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Fix 4: Make sure grid items don't overflow */
+.hero-cards-container,
+.grid {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix 5: Ensure form inputs don't cause overflow */
+.form-input,
+.form-select,
+textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix 6: Mobile specific containers */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100vw; /* Use viewport width instead of 100% */
+    }
+    
+    /* Ensure all sections stay within bounds */
+    section {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+    }
+    
+    /* Fix hero cards on mobile */
+    .hero-2__cards {
+        padding: 0 1rem;
+        max-width: 100vw;
+        box-sizing: border-box;
+    }
+    
+    .hero-cards-container {
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    /* Fix modal content */
+    .contact-modal-content {
+        max-width: calc(100vw - 2rem);
+        margin: 0 1rem;
+    }
+    
+    /* Fix process timeline */
+    .process-timeline {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+    
+    .process-step {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+}
+
+/* Fix 7: Prevent specific wide elements */
+.property-card,
+.benefit-card,
+.step-content {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix 8: Images responsive */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix 9: Ensure text doesn't overflow */
+h1, h2, h3, h4, h5, h6, p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+/* Fix 10: Prevent transforms from causing overflow */
+.scroll-reveal,
+.scroll-reveal-left,
+.scroll-reveal-right,
+.scroll-reveal-scale {
+    max-width: 100%;
+    overflow: hidden;
+}
     </style>
 
     <!-- Structured Data / Schema.org -->
@@ -1666,7 +1787,7 @@
               <!-- Right image -->
               <div class="hero-2__media">
                 <img
-                  src="https://i.postimg.cc/wBptYBWN/Screenshot-2025-08-21-at-15-53-18.png"
+                  src="https://i.postimg.cc/PJ9Nqbj6/Screenshot-2025-08-21-at-17-25-06.png"
                   alt="Moderní dům"
                   class="hero-2__img"
                 />
@@ -1829,7 +1950,7 @@
             <div class="container mx-auto px-4 sm:px-6">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="order-2 md:order-1 scroll-reveal-left">
-                        <img src="https://i.postimg.cc/1XnRqxCP/Screenshot-2025-08-21-at-15-55-29.png" alt="Krásný rodinný dům" class="rounded-2xl shadow-2xl w-full">
+                        <img src="https://i.postimg.cc/wT99hbWh/Screenshot-2025-08-21-at-17-26-49.png" alt="Krásný rodinný dům" class="rounded-2xl shadow-2xl w-full">
                     </div>
                     <div class="order-1 md:order-2 scroll-reveal-right">
                         <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">Dáváme nemovitostem nový život</h2>
@@ -2828,7 +2949,180 @@
             });
         });
     });
+
+    // Fix scroll behavior issues
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Fix 1: Prevent ScrollTrigger from interfering with mobile scroll
+    if (window.innerWidth <= 768) {
+        // Disable problematic scroll behaviors on mobile
+        ScrollTrigger.config({
+            limitCallbacks: true,
+            ignoreMobileResize: true
+        });
+    }
+    
+    // Fix 2: Add proper touch handling
+    let isScrolling = false;
+    
+    window.addEventListener('scroll', function() {
+        isScrolling = true;
+    });
+    
+    // Fix 3: Prevent scroll interference
+    window.addEventListener('touchstart', function() {
+        isScrolling = false;
+    });
+    
+    window.addEventListener('touchmove', function() {
+        isScrolling = true;
+    });
+    
+    // Fix 4: Override any problematic scroll behaviors
+    document.body.addEventListener('touchmove', function(e) {
+        // Don't prevent default - allow normal scrolling
+        if (!e.target.closest('.contact-modal')) {
+            return;
+        }
+    }, { passive: true });
+    
+    // Fix 5: Refresh ScrollTrigger on resize to prevent issues
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            ScrollTrigger.refresh();
+        }, 150);
+    });
+    
+    // Fix 6: Prevent smooth scroll conflicts
+    const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+    smoothScrollLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                // Use native scroll instead of smooth scroll on mobile
+                if (window.innerWidth <= 768) {
+                    target.scrollIntoView({ 
+                        behavior: 'auto',
+                        block: 'start' 
+                    });
+                } else {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start' 
+                    });
+                }
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (mobileMenu && mobileMenu.classList.contains('open')) {
+                    closeMenu();
+                }
+            }
+        });
+    });
+    
+    // Fix 7: Disable problematic CSS scroll behavior on mobile
+    if (window.innerWidth <= 768) {
+        document.documentElement.style.scrollBehavior = 'auto';
+        document.body.style.scrollBehavior = 'auto';
+    }
+    
+    // Fix 8: Override CSS scroll-behavior property on mobile
+    const style = document.createElement('style');
+    style.textContent = `
+        @media (max-width: 768px) {
+            html {
+                scroll-behavior: auto !important;
+            }
+            body {
+                scroll-behavior: auto !important;
+            }
+            .scroll-smooth {
+                scroll-behavior: auto !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Fix 9: Prevent ScrollTrigger from jumping to top
+    ScrollTrigger.addEventListener("refresh", () => {
+        // Don't auto-scroll on refresh
+        window.history.scrollRestoration = 'manual';
+    });
+    
+    // Fix 10: Handle iOS Safari specific issues
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        // Fix iOS scroll issues
+        document.body.style.webkitOverflowScrolling = 'touch';
+        
+        // Prevent rubber band scrolling interference
+        document.body.addEventListener('touchstart', function() {}, { passive: true });
+        document.body.addEventListener('touchend', function() {}, { passive: true });
+    }
+    
+    // Fix 11: Ensure animations don't interfere with scroll position
+    const processSteps = document.querySelectorAll('.process-step');
+    processSteps.forEach((step, index) => {
+        ScrollTrigger.create({
+            trigger: step,
+            start: 'top 90%',
+            end: 'bottom 10%',
+            toggleActions: 'play none none reverse',
+            onUpdate: self => {
+                // Prevent any scroll position changes during animation
+                if (self.isActive && window.innerWidth <= 768) {
+                    return;
+                }
+            }
+        });
+    });
+});
+
+// Additional fix for preventing scroll to top
+window.addEventListener('beforeunload', function() {
+    window.scrollTo(0, window.pageYOffset);
+});
+
+// Fix for hash changes causing scroll issues
+window.addEventListener('hashchange', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// Override any CSS transitions that might interfere
+const mobileScrollFix = document.createElement('style');
+mobileScrollFix.textContent = `
+    @media (max-width: 768px) {
+        * {
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        body, html {
+            overflow-x: hidden !important;
+            width: 100% !important;
+            position: relative !important;
+        }
+        
+        /* Disable smooth scrolling on mobile */
+        .scroll-smooth {
+            scroll-behavior: auto !important;
+        }
+        
+        /* Prevent animations from affecting scroll */
+        .scroll-reveal,
+        .scroll-reveal-left,
+        .scroll-reveal-right,
+        .scroll-reveal-scale {
+            transition: none !important;
+        }
+    }
+`;
+document.head.appendChild(mobileScrollFix);
     </script>
+
+    
 
 <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;96de86122a83f9a1&quot;,&quot;version&quot;:&quot;2025.7.0&quot;,&quot;r&quot;:1,&quot;token&quot;:&quot;bdaa1ab617584900afefbb7aed4074f0&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}}}" crossorigin="anonymous"></script>
 
